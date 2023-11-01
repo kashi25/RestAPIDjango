@@ -1,0 +1,23 @@
+# created by virtualenv automatically
+
+
+# created by virtualenv automatically
+# Ignore the pyenv.cfg file
+pyenv.cfg
+
+# Ignore the Lib/site-packages directory
+Lib/site-packages/
+
+# Ignore the Scripts folder
+Scripts/
+
+*.env
+*.pyc
+*.cfg
+__pycache__/
+
+
+# git rm -r --cached .
+# git add .
+# git add .gitignore
+# git commit -m "Updated .gitignore to ignore pyenv.cfg, Lib/site-packages/, and Scripts/"
