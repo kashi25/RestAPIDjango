@@ -4,6 +4,7 @@
 # created by virtualenv automatically
 # Ignore the pyenv.cfg file
 pyenv.cfg
+settings.py
 
 # Ignore the Lib/site-packages directory
 Lib/site-packages/
