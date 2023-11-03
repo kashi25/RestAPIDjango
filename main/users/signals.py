@@ -4,17 +4,28 @@ from django.dispatch import receiver
 
 from .models import Profile
 
-@receiver(post_save, send=User)
+@receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user= instance)
+        Profile.objects.create(user=instance)
 
-@receiver(pre_save, sender = User)
+@receiver(pre_save, sender=User)
 def set_username(sender, instance, **kwargs):
     if not instance.username:
         username = f'{instance.first_name}_{instance.last_name}'.lower()
         counter = 1
         while User.objects.filter(username=username):
             username = f'{instance.first_name}_{instance.last_name}_{counter}'.lower()
-            counter +=1
+            counter += 1
         instance.username = username
+
+
+# @receiver(pre_save, sender=User)
+# def set_username(sender, instance, **kwargs):
+#     if not instance.username:
+#         username = f'{instance.first_name}_{instance.last_name}'.lower()
+#         counter = 1
+#         while User.objects.filter(username=username).exclude(pk=instance.pk).exists():
+#             username = f'{instance.first_name}_{instance.last_name}_{counter}'.lower()
+#             counter += 1
+#         instance.username = username
