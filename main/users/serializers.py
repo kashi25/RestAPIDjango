@@ -24,7 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
             if user.check_password(old_password):
                 user.set_password(password)
             else:
-                raise Exception("old password is incorrect")
+                raise Exception({"info":err})
             user.save()
         except Exception as err:
             raise serializers.ValidationError(err)
