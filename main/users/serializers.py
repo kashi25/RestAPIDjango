@@ -1,16 +1,16 @@
 from django.contrib.auth.models import User
 
 from rest_framework import serializers
+
 from .models import Profile
 
 class ProfileSerializer(serializers.ModelSerializer):
-    
-    user = serializers.HyperlinkedRelatedField(read_only=True, many=False, view_name='user-details')
-    
+
+    user = serializers.HyperlinkedRelatedField(read_only=True, many=False, view_name='user-detail')
+
     class Meta:
         model = Profile
-        Fields = ['url', 'id', 'user', 'image']
-
+        fields = ['url', 'id', 'user', 'image']
 
 
 class UserSerializer(serializers.ModelSerializer):
