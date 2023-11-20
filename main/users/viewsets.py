@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 
-from rest_framework import viewsets
+from rest_framework import viewsets, mixins
 
 from .serializers import UserSerializer, ProfileSerializer
 from .permissions import IsUserOwnerOrGetAndPostOnly, IsProfileownerReadOnly
@@ -14,7 +14,9 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     
 
-class profileViewSet(viewsets.ModelViewSet):
+class profileViewSet(viewsets.GenericViewSet, mixins.RetrieveModelMixin, mixins.UpdateModelMixin,
+                      # mixins.ListModelMixin, mixins.CreateModelMixin, mixins.DestroyModelMixin,
+                     ):
     permission_classes = [IsProfileownerReadOnly,]
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
