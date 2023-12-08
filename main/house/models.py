@@ -1,4 +1,5 @@
 import os
+import uuid
 from django.db import models
 
 # Create your models here.
@@ -21,5 +22,6 @@ house_image_path = GenerateHouseImagePath()
 
 
 class House(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=120)
     image = models.FileField(upload_to=house_image_path, blank=True, null=True)
