@@ -1,6 +1,6 @@
 from rest_framework import permissions
 
-class HouseManagerOrNone(permissions.BasePermission):
+class IsHouseManagerOrNone(permissions.BasePermission):
     
     
     def has_permission(self, request, view):
