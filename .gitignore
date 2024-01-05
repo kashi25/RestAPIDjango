@@ -22,3 +22,4 @@ __pycache__/
 # git add .
 # git add .gitignore
 # git commit -m "Updated .gitignore to ignore pyenv.cfg, Lib/site-packages/, and Scripts/"
+#this is the all about the ignore file
